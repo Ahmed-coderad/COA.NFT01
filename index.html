@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Protected Certificate</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff;
+            position: relative;
+        }
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            pointer-events: none;
+        }
+        /* Watermark Kiri */
+        .watermark-left {
+            position: absolute;
+            top: 1;
+            left: -1px; /* Di luar area sertifikat */
+            transform: rotate(-90deg);
+            font-size: 1.5rem;
+            color: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+        /* Watermark Kanan */
+        .watermark-right {
+            position: absolute;
+            bottom: 1;
+            right: -1px; /* Di luar area sertifikat */
+            transform: rotate(90deg);
+            font-size: 1.5rem;
+            color: rgba(0, 0, 0, 0.1);
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://gateway.pinata.cloud/ipfs/bafybeifv6kx6eouq5zkzd36poyyslqp7zsd3cb4ey4pxem3gqx4mn2x3om" alt="Certificate">
+    <!-- Watermark Kiri -->
+    <div class="watermark-left">Rizky Ahmed Darmawan</div>
+    <!-- Watermark Kanan -->
+    <div class="watermark-right">Rizky Ahmed Darmawan</div>
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault()); // Blok klik kanan
+        document.addEventListener('keydown', (e) => {
+            // Blok kombinasi tombol
+            if ((e.ctrlKey && e.key === 's') || 
+                (e.ctrlKey && e.shiftKey && e.key === 'i') || 
+                (e.ctrlKey && e.key === 'p') || 
+                (e.ctrlKey && e.key === 'c')) {
+                e.preventDefault();
+                alert('Aksi ini tidak diizinkan!');
+            }
+            // Blok screenshot
+            if (e.key === 'PrintScreen') {
+                alert('Screenshot tidak diizinkan!');
+                document.body.style.filter = 'blur(10px)';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
